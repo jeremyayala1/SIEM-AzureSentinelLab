@@ -70,8 +70,68 @@ Next we want to enable the ability to gather logs from the VM into the log analy
 <br />
 <br />
 Turn "Servers" ON for Microsoft Defender. Leave "SQL servers on machines" OFF since they're irrelevant to the lab. <br/>
-  Hit Save: <br/>
+  Hit Save (if it fails, try again until the Azure accepts the change): <br/>
 <img src="https://i.imgur.com/NAWZpS6.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+Select "Data collection" on the left, Select "All Events" and Save: <br/>
+<img src="https://i.imgur.com/NAWZpS6.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+Navigate to "Log Analytics Workspace", select your created workspace, and select "Virtual machines": <br/>
+<img src="https://i.imgur.com/FzJb61J.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+Select your VM: <br/>
+<img src="https://i.imgur.com/kCmq0WI.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/> <br/>
+Connect: <br/>
+<img src="https://i.imgur.com/SmVUpTp.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+Navigate to "Microsoft Sentinel" and select "Create Microsoft Sentinel": <br/>
+<img src="https://i.imgur.com/UhpDdlt.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+Select the log analytics workspace created earlier and select "Add": <br/>
+<img src="https://i.imgur.com/Qyxmb9a.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+Navigate to "Virtual machines", select your VM, and copy the Public IP address: <br/>
+<img src="https://i.imgur.com/RqzJQF9.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+Search for Remote Desktop Connection on your computer, and input the public IP from previous step:<br/>
+<img src="https://i.imgur.com/TfsYFFe.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+After inputing IP, select "More choices" and "Use a different account". <br/>
+ Input the account name and password you created on Azure. <br/>
+ Allow VM to load: <br/>
+<img src="https://i.imgur.com/3F7euXH.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+***ON HOST COMPUTER, NOT VM*** <br/>
+ Open Command Prompt (CMD) and enter: ping xxx.xxx.xxx.xxx -t <br/>
+ Put the IP Address of your VM where xxx.xxx.xxx.xxx is<br/>
+ You'll notice pings are timing out: <br/>
+<img src="https://i.imgur.com/22nJXp3.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+***ON VM, NOT HOST COMPUTER*** <br/>
+ Select start, type "wf.msc" and Select "Windows Defender Firewall Properties":
+<img src="https://i.imgur.com/KTugpCm.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+***ON VM, NOT HOST COMPUTER*** <br/>
+On Domain, Private, and Public Profiles, turn Firewall state to Off. Hit Apply and OK <br/>
+ Again, this is being performed ON THE VM to monitor attacks. Do not conduct this on your HOST COMPUTER!!! <br/>
+<img src="https://i.imgur.com/KTugpCm.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+ <img src="https://i.imgur.com/4G1U29l.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+***ON HOST COMPUTER, NOT VM*** <br/>
+Verify that pings are not reaching the VM: <br/>
+<img src="https://i.imgur.com/TRnFqy8.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
 <br />
 <br />
 
