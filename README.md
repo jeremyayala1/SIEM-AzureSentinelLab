@@ -1,4 +1,4 @@
-<h1>SIEM - Azure Sentinel Lab</h1>
+![image](https://github.com/jeremyayala1/SIEM-AzureSentinelLab/assets/124664483/93107753-a510-4655-95cb-c5d290c31266)<h1>SIEM - Azure Sentinel Lab</h1>
 
 <!--
  ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
@@ -142,7 +142,26 @@ Verify that pings are not reaching the VM: <br/>
 <img src="https://i.imgur.com/Dy0Tef8.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
 <br />
 <br />
+***ON VM, NOT HOST COMPUTER*** <br/>
+ Select start, type "Windows PowerShell ISE" to open an instance. Hit "New Script" at the top left <br/>
+ Copy the PowerShell script from the file on this repository and paste it into the VM's PowerShell instance: <br/>
+<img src="https://i.imgur.com/3k3lghi.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+***ON HOST COMPUTER, NOT VM*** <br/>
+Go to [ipgeolocation](https://ipgeolocation.io), signup, and grab your API Key number. <br/>
+<img src="https://i.imgur.com/ZUo6dWx.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+***ON VM, NOT HOST COMPUTER*** <br/>
+Replace the API Key from the PowerShell script with YOUR API Key <br/>
+ Save the file to the Desktop as "Log_Exporter" on Desktop (ensure it has .ps1 type underneath) <br/>
+<img src="https://i.imgur.com/Dy0Tef8.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
 
+
+ 
 <!--
  ```diff
 - text in red
