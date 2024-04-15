@@ -134,6 +134,14 @@ Verify that pings are not reaching the VM: <br/>
 <img src="https://i.imgur.com/TRnFqy8.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
 <br />
 <br />
+***ON VM, NOT HOST COMPUTER*** <br/>
+ Select start, type "Event Viewer" and Navigate to "Windows Logs" -> "Security" <br/>
+ This will show us the event logs for login successes or failures <br/>
+ In particular, you may see Event ID == 4625 which is a logon failure <br/>
+ Our goal is to collect these logon failures from RDP attackers and plot them on the SIEM: <br/>
+<img src="https://i.imgur.com/Dy0Tef8.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
 
 <!--
  ```diff
