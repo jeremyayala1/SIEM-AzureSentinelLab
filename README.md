@@ -144,18 +144,68 @@ Verify that pings are not reaching the VM: <br/>
 <br />
 ***ON HOST COMPUTER, NOT VM*** <br/>
 Go to [ipgeolocation](https://ipgeolocation.io), signup, and grab your API Key number. <br/>
+ ***NOTE: Free API Key is only good for 1000 API Requests. Not much considering a single attacker could flood you with thousands of attempts into your VM. <br/>
+ You can purchase a subscription to see more data, but it is not required to learn the necessary skills for this lab. <br/>
 <img src="https://i.imgur.com/ZUo6dWx.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
 <br />
 <br />
  ***ON VM, NOT HOST COMPUTER*** <br/>
+ This step allows us to extract the geolocation of the attackers (converting IP Addresses to latitude and longitude). <br/>
  Select start, type "Windows PowerShell ISE" to open an instance. Hit "New Script" at the top left <br/>
  Copy the PowerShell script from the file on this repository and paste it into the VM's PowerShell instance <br/>
- Replace the API Key from the PowerShell script with YOUR API Key from ipgeolocation <br/>
+ Replace the API Key (d4600...a457) from the PowerShell script with YOUR API Key from ipgeolocation <br/>
  Save the file to the Desktop as "Log_Exporter" on Desktop (ensure it has .ps1 type underneath): <br/>
 <img src="https://i.imgur.com/3k3lghi.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
 <br />
 <br />
-
+ ***ON VM, NOT HOST COMPUTER*** <br/>
+ Push play (red circle) to run the script and leave it running. <br/>
+ You will begin to see attacks from varying parts of the world attempting to break in. <br/>
+ Here we're receiving attacks from Argentina. They're trying a variety of different usernames to gain access. <br/>
+<img src="https://i.imgur.com/Xl2bVUX.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+***ON HOST COMPUTER, NOT VM*** <br/>
+At this point, our PowerShell script is collecting a log (ON THE VM) of the geolocation of our attackers. <br/>
+ What we can do now is go back into our Azure Portal and create a custom log to pull the data from the log on our VM. <br/>
+ Search for Log Analytics workspace -> select your existing workspace. <br/>
+ Select Tables -> Create -> New custom log (MMA-based) <br/>
+<img src="https://i.imgur.com/vxRJg92.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON VM, NOT HOST COMPUTER*** <br/>
+Select Start -> type "Run" -> Search for C:\ProgramData (this folder is hidden by default) <br/>
+ Open the txt file "failed_rdp", copy all of it's contents. <br/>
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+Open a notepad on your host computer, and paste the contents from your VM's failed_rdp log file. <br/>
+ Save it on your Desktop as "failed_rdp.log". <br/>
+ Back in Azure within "Create a custom log", it is asking for a sample log. Select the file you saved on your host computer's Desktop "failed_rdp.log" <br/>
+ This will be used to train Log Analytics on what to look for on the actual file (within our VM). <br/>
+ Select Next <br/>
+<img src="https://i.imgur.com/g5dlrST.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+In Azure, hit next until you reach Collection paths <br/>
+ Type = "Windows" and Path = "C:\ProgramData\failed_rdp.log" <br/>
+ Select Next <br/>
+<img src="https://i.imgur.com/1K37OGB.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+Under details, give the log a custom name <br/>
+ I used "FAILED_RDP_WITH_GEO" <br/>
+ Hit Next and Create <br/>
+<img src="https://i.imgur.com/1K37OGB.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+It will take some time for our custom log to populate from the VM to Azure Log Analytics <br/>
+ We can verify failed Remote Desktop Protocol (RDP) events within Azure logs <br/>
+ Type this query "SecurityEvent | where EventID == 4625" and Hit Run <br/>
+<img src="https://i.imgur.com/0r3PyYf.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
 
 
  
