@@ -207,7 +207,54 @@ It will take some time for our custom log to populate from the VM to Azure Log A
 <img src="https://i.imgur.com/0r3PyYf.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
 <br />
 <br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+From the last step, we were able to see the Windows log events. <br/>
+ Now, we'll query our log. Input the full KQL query to extract RawData separating columns for latitude, longitude, etc. <br/>
+ The full query is in this repository under "AzureKQLQuery" <br/>
+ Verify that the output matches what's on your VM's log before proceeding to the next step. <br/>
+<img src="https://i.imgur.com/3qxtaKr.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+Lastly, we will use the same query from above to create a map within Azure Sentinel to plot the attacks. <br/>
+ Navigate to Azure -> Microsoft Sentinel -> Select current Sentinel project -> Worksbooks -> Add Workbook <br/>
+<img src="https://i.imgur.com/5TqDZdc.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+Select Edit on the top left, and then the 3 dots on the right to remove the 2 existing modules. <br/>
+<img src="https://i.imgur.com/QbwXMvf.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+Select + Add and "Add query" <br/>
+<img src="https://i.imgur.com/mzbedOm.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+Paste the same KQL query from earlier. <br/>
+ Under Visualization, select "Map" and hit "Run query" <br/>
+ (You may also change the "Size" to "Full" if you'd like a better view) <br/>
+<img src="https://i.imgur.com/AnQVcbb.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+Apply the following settings to adjust the map to see country and amount of log entries (RDP attempts): <br/>
+ (If your results look off, try using "country" field rather than latitude and longitude) <br/>
+<img src="https://i.imgur.com/TSWbSb2.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<img src="https://i.imgur.com/dI8T6Np.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
+ ***ON HOST COMPUTER, NOT VM*** <br/>
+Name and save your map and view where the attacks are coming from <br/>
+ The API only grants 1000 free calls a day, so on this day, I received attacks from Argentina. <br/>
+ The 2 logs were from my local machine logging in <br/>
+<img src="https://i.imgur.com/tsC5xF0.png" height="80%" width="80%" alt="Azure Sentinel SIEM Steps"/>
+<br />
+<br />
 
+<h2>Thanks for viewing my home lab. Hope you get to try it out sometime!
+Aloha, Jeremy</h2>
 
  
 <!--
