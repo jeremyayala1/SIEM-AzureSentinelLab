@@ -13,6 +13,7 @@ In this project, I set up a SIEM (Azure Sentinel) and connect it to a live virtu
 
 - <b>PowerShell</b> 
 - <b>Azure Sentinel</b>
+- <b>Kusto Query Language</b>
 
 <h2>Environments Used </h2>
 
