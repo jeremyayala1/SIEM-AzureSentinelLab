@@ -1,4 +1,4 @@
-<h1>SIEM - Azure Sentinel Lab</h1>
+<h1>SIEM - Microsoft Sentinel Lab</h1>
 
 <!--
  ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
