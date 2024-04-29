@@ -5,7 +5,7 @@
 -->
 
 <h2>Description</h2>
-In this project, I set up a SIEM (Azure Sentinel) and connect it to a live virtual machine (VM) on Azure running a Windows environment. By lowering defenses, I set this VM up as a honeypot. Interestingly, attacks can be observed from around the world attempting to RDP Brute Force the VM. With a custom PowerShell script, I'm able to look up the attackers Geolocation information using Free IP Geolocation API and plot these attackers' locations on the Azure Sentinel Map.
+In this project, I set up a SIEM (Azure Sentinel) and connect it to a live virtual machine (VM) on Azure running a Windows environment. By lowering defenses, I set this VM up as a honeypot. Interestingly, attacks can be observed from around the world attempting to RDP Brute Force the VM. With a custom PowerShell script, I'm able to look up the attackers' geolocation information using Free IP Geolocation API and plot these attackers' locations on the Azure Sentinel Map.
 <br />
 
 
